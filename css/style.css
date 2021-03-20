@@ -1,8 +1,19 @@
-
+/*Style for the web applicaton header */
 .header {
   padding: 10px;
   text-align: center;
   background: #1abc9c;
   color: white;
-  font-size: 30px;
+  font-size: 20px;
+}
+
+/*Style for the web applicaton basemap */
+#mapid { height: 400px; }
+
+#button-wrapper {
+    position: absolute;
+    top: 5%;
+    left: 90%;
+    width: 100%;
+    z-index: 1000;
 }

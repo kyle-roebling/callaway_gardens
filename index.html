@@ -7,23 +7,33 @@
 
 		<!--put your external stylesheet links here-->
 		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="lib/leaflet/leaflet.css">
 		<!--[if IE<9]>
 			<link rel="stylesheet" href="css/style.ie.css">
 		<![endif]-->
+		<script type="text/javascript" src="lib/leaflet/leaflet.js"></script>
 	</head>
 
 	<body>
 
 		<!--Header for web map-->
 		<div class="header">
-		  <h1>Callaway Gardens</h1>
-		  <p>Resort & Gardens</p>
+		  <h2>Callaway Gardens</h2>
+
+		</div>
+
+
+		<!--Div for web map-->
+		<div id="mapid">
+				<div id="button-wrapper">
+					<button type="button">Explore!</button>
+				</div>
 		</div>
 
 
 		<!--Footer for web map-->
 		<div class="footer">
-			<h1>Callaway Gardens</h1>
+			<h2>Callaway Gardens</h2>
 
 			<footer>
 			  <p>17800 US Hwy 27<br>
@@ -34,5 +44,6 @@
 		</div>
 
 		<script type="text/javascript" src="js/main.js"></script>
+
 	</body>
 </html>
