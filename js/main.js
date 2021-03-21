@@ -19,23 +19,37 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 
 // Global Variables
 var logding = null;
+var dining = null;
 
 
 // Database Queries
-// Get all lodging sites
-var sqlQuery = "SELECT * FROM lodging_wgs";
+// Get all data elements
+var sqlQuery_lodging = "SELECT * FROM lodging_wgs";
+var sqlQuery_dining = "SELECT * FROM dining_wgs"
 
 // Set CARTO Username
 var cartoDBUserName = "roebling";
 
-// Function to add all coffee shops
+// Function to add all layers
 function showAll(){
     if(mymap.hasLayer(logding)){
         mymap.removeLayer(logding);
     };
+    if(mymap.hasLayer(dining)){
+        mymap.removeLayer(dining);
+    };
     // Get CARTO selection as GeoJSON and Add to Map
-    $.getJSON("https://"+cartoDBUserName+".carto.com/api/v2/sql?format=GeoJSON&q="+sqlQuery, function(data) {
-        coffeeShopLocations = L.geoJson(data,{
+    $.getJSON("https://"+cartoDBUserName+".carto.com/api/v2/sql?format=GeoJSON&q="+sqlQuery_lodging, function(data) {
+        logding = L.geoJson(data,{
+            onEachFeature: function (feature, layer) {
+                layer.bindPopup('<p><b>' + feature.properties.name + '</b><br /><em>' + feature.properties.price + '</em></p>');
+                layer.cartodb_id=feature.properties.cartodb_id;
+            }
+        }).addTo(mymap);
+    });
+    // Get CARTO selection as GeoJSON and Add to Map
+    $.getJSON("https://"+cartoDBUserName+".carto.com/api/v2/sql?format=GeoJSON&q="+sqlQuery_dining, function(data) {
+        dining = L.geoJson(data,{
             onEachFeature: function (feature, layer) {
                 layer.bindPopup('<p><b>' + feature.properties.name + '</b><br /><em>' + feature.properties.price + '</em></p>');
                 layer.cartodb_id=feature.properties.cartodb_id;
