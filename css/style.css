@@ -1,4 +1,6 @@
 /*Style for the web applicaton header */
+
+/*
 .header {
   padding: 10px;
   text-align: center;
@@ -6,6 +8,8 @@
   color: white;
   font-size: 20px;
 }
+*/
+
 
 /*Style for the web applicaton basemap */
 #mapid { height: 400px; }
