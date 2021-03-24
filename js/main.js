@@ -110,6 +110,28 @@ function showAll(){
 
 };
 
+// Function to set user's current location
+$(document).ready(function(){
+  $("#location_id").click(function(){
+    mymap.locate({setView: true, maxZoom: 13});
+
+    function onLocationFound(e) {
+    var radius = e.accuracy;
+    L.marker(e.latlng).addTo(mymap)
+
+    L.circle(e.latlng, radius).addTo(mymap);
+  }
+
+  mymap.on('locationfound', onLocationFound);
+  });
+});
+
+// Function to set map back to home location at Callaway Gardens
+$(document).ready(function(){
+  $("#home_id").click(function(){
+    mymap.panTo([32.83736,-84.85368]);
+  });
+});
 
 // Run showAll function automatically when document loads
 $( document ).ready(function() {
