@@ -25,6 +25,9 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+		<!-- Font Awesome 5 -->
+		<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+
 
 	</head>
 
@@ -53,11 +56,20 @@
 			</nav>
 
 
-			<!--Div for web map-->
+		<!--Div for web map-->
 		<div id="mapid">
-				<div id="button-wrapper">
-					<button type="button">Explore!</button>
+
+			  <!--Add current location icon-->
+				<div id="button-location">
+					<button id ="location_id"><i class='fas fa-map-marker-alt'></i></button>
 				</div>
+
+				<!--Add home icon-->
+				<div id="button-home">
+					<button id ="home_id"><i class='fas fa-home'></i></button>
+				</div>
+
+
 		</div>
 
 

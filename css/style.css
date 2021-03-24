@@ -1,23 +1,31 @@
 /*Style for the web applicaton header */
 
-/*
-.header {
-  padding: 10px;
-  text-align: center;
-  background: #1abc9c;
-  color: white;
-  font-size: 20px;
-}
-*/
-
 
 /*Style for the web applicaton basemap */
 #mapid { height: 400px; }
 
-#button-wrapper {
+/*Styling for home button  */
+#button-home {
     position: absolute;
-    top: 5%;
-    left: 90%;
+    top: 20%;
+    left: 1%;
     width: 100%;
     z-index: 1000;
+}
+
+#home_id {
+  font-size: 17px;
+}
+
+/*Styling for user location button */
+#button-location {
+    position: absolute;
+    top: 30%;
+    left: 1%;
+    width: 100%;
+    z-index: 1000;
+}
+
+#location_id {
+  font-size: 24px;
 }
