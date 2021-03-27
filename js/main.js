@@ -17,12 +17,14 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     accessToken: 'pk.eyJ1Ijoia3JvZWJsaW5nIiwiYSI6ImNqeXczaGplMjB3YjgzYmxyZGU1OG90bXUifQ.ItIrq8YGHvZIilkcx-U8Ag'
 }).addTo(mymap);
 
+
 // Global Variables
-var logding = null;
-var dining = null;
-var lakes = null;
-var trails = null;
-var activities = null;
+var map_layers = new L.LayerGroup();
+var lodging;
+var dining;
+var lakes;
+var trails;
+var activities;
 
 
 // Database Queries
@@ -38,77 +40,90 @@ var cartoDBUserName = "roebling";
 
 // Function to add all layers
 function showAll(){
-    if(mymap.hasLayer(logding)){
-        mymap.removeLayer(logding);
-    };
 
-    if(mymap.hasLayer(dining)){
-        mymap.removeLayer(dining);
-    };
+    $.when(ajax1(), ajax2(), ajax3(), ajax4(), ajax5()).done(function(a1, a2, a3, a4, a5){
 
-    if(mymap.hasLayer(activities)){
-        mymap.removeLayer(activities);
-    };
+      //Add search bar to top right corner
+      var controlSearch = new L.Control.Search({
+        position:'topright',
+        layer: map_layers,
+        propertyName: 'name',
+        initial: false,
+        zoom: 18,
+        marker: false
+      });
 
-    if(mymap.hasLayer(lakes)){
-        mymap.removeLayer(lakes);
-    };
-
-    if(mymap.hasLayer(trails)){
-        mymap.removeLayer(trails);
-    };
+      mymap.addControl( controlSearch );
+  });
 
     // Get CARTO selection as GeoJSON and Add lodging to the map
-    $.getJSON("https://"+cartoDBUserName+".carto.com/api/v2/sql?format=GeoJSON&q="+sqlQuery_lodging, function(data) {
-        logding = L.geoJson(data,{
-            onEachFeature: function (feature, layer) {
-                layer.bindPopup('<p><b>' + feature.properties.name + '</b><br /><em>' + feature.properties.price + '</em></p>');
-                layer.cartodb_id=feature.properties.cartodb_id;
-            }
-        }).addTo(mymap);
-    });
+    function ajax1(){
 
-    // Get CARTO selection as GeoJSON and Add dining to the map
-    $.getJSON("https://"+cartoDBUserName+".carto.com/api/v2/sql?format=GeoJSON&q="+sqlQuery_dining, function(data) {
-        dining = L.geoJson(data,{
-            onEachFeature: function (feature, layer) {
-                layer.bindPopup('<p><b>' + feature.properties.name + '</b><br /><em>' + feature.properties.price + '</em></p>');
-                layer.cartodb_id=feature.properties.cartodb_id;
-            }
-        }).addTo(mymap);
-    });
+        $.getJSON("https://"+cartoDBUserName+".carto.com/api/v2/sql?format=GeoJSON&q="+sqlQuery_lodging, function(data) {
+          lodging = L.geoJson(data,{
+              onEachFeature: function (feature, layer) {
+                  layer.bindPopup('<p><b>' + feature.properties.name + '</b><br /><em>' + feature.properties.price + '</em></p>');
+                  layer.cartodb_id=feature.properties.cartodb_id;
+              }
+          }).addTo(mymap);
+          map_layers.addLayer(lodging);
+        });
 
-    // Get CARTO selection as GeoJSON and activities to the map
-    $.getJSON("https://"+cartoDBUserName+".carto.com/api/v2/sql?format=GeoJSON&q="+sqlQuery_activities, function(data) {
-        activities = L.geoJson(data,{
-            onEachFeature: function (feature, layer) {
-                layer.bindPopup('<p><b>' + feature.properties.name + '</b><br /><em>' + feature.properties.status + '</em></p>');
-                layer.cartodb_id=feature.properties.cartodb_id;
-            }
-        }).addTo(mymap);
-    });
+    }
 
-    // Get CARTO selection as GeoJSON and Add trails to the map
-    $.getJSON("https://"+cartoDBUserName+".carto.com/api/v2/sql?format=GeoJSON&q="+sqlQuery_trails, function(data) {
-        trails = L.geoJson(data,{
-            onEachFeature: function (feature, layer) {
-                layer.bindPopup('<p><b>' + feature.properties.name + '</b><br /><em>' + feature.properties.time + '</em></p>');
-                layer.cartodb_id=feature.properties.cartodb_id;
-            }
-        }).addTo(mymap);
-    });
+    function ajax2(){
+        // Get CARTO selection as GeoJSON and Add dining to the map
+        $.getJSON("https://"+cartoDBUserName+".carto.com/api/v2/sql?format=GeoJSON&q="+sqlQuery_dining, function(data) {
+            dining = new L.geoJson(data,{
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup('<p><b>' + feature.properties.name + '</b><br /><em>' + feature.properties.price + '</em></p>');
+                    layer.cartodb_id=feature.properties.cartodb_id;
+                }
+            }).addTo(mymap);
+            map_layers.addLayer(dining);
+        });
+      };
 
-    // Get CARTO selection as GeoJSON and Add lakes to the map
-    $.getJSON("https://"+cartoDBUserName+".carto.com/api/v2/sql?format=GeoJSON&q="+sqlQuery_lakes, function(data) {
-        lakes = L.geoJson(data,{
-            onEachFeature: function (feature, layer) {
-                layer.bindPopup('<p><b>' + feature.properties.name + '</b><br /><em>' + feature.properties.fishing + '</em></p>');
-                layer.cartodb_id=feature.properties.cartodb_id;
-            }
-        }).addTo(mymap);
-    });
+    function ajax3(){
+        // Get CARTO selection as GeoJSON and activities to the map
+        $.getJSON("https://"+cartoDBUserName+".carto.com/api/v2/sql?format=GeoJSON&q="+sqlQuery_activities, function(data) {
+            activities = L.geoJson(data,{
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup('<p><b>' + feature.properties.name + '</b><br /><em>' + feature.properties.status + '</em></p>');
+                    layer.cartodb_id=feature.properties.cartodb_id;
+                }
+            }).addTo(mymap);
+            map_layers.addLayer(activities);
+        });
+      }
 
-};
+    function ajax4(){
+        // Get CARTO selection as GeoJSON and Add trails to the map
+        $.getJSON("https://"+cartoDBUserName+".carto.com/api/v2/sql?format=GeoJSON&q="+sqlQuery_trails, function(data) {
+            trails = L.geoJson(data,{
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup('<p><b>' + feature.properties.name + '</b><br /><em>' + feature.properties.time + '</em></p>');
+                    layer.cartodb_id=feature.properties.cartodb_id;
+                }
+            }).addTo(mymap);
+            map_layers.addLayer(trails);
+        });
+    }
+
+    function ajax5(){
+        // Get CARTO selection as GeoJSON and Add lakes to the map
+        $.getJSON("https://"+cartoDBUserName+".carto.com/api/v2/sql?format=GeoJSON&q="+sqlQuery_lakes, function(data) {
+            lakes = L.geoJson(data,{
+                onEachFeature: function (feature, layer) {
+                    layer.bindPopup('<p><b>' + feature.properties.name + '</b><br /><em>' + feature.properties.fishing + '</em></p>');
+                    layer.cartodb_id=feature.properties.cartodb_id;
+                }
+            }).addTo(mymap);
+            map_layers.addLayer(lakes);
+        });
+      };
+  };
+
 
 // Function to set user's current location
 $(document).ready(function(){
@@ -126,10 +141,11 @@ $(document).ready(function(){
   });
 });
 
+
 // Function to set map back to home location at Callaway Gardens
 $(document).ready(function(){
   $("#home_id").click(function(){
-    mymap.panTo([32.83736,-84.85368]);
+    mymap.setView([32.83736, -84.85368], 13);
   });
 });
 

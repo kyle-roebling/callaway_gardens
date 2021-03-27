@@ -29,3 +29,16 @@
 #location_id {
   font-size: 24px;
 }
+
+/*Styling for user search button */
+#button-search {
+    position: absolute;
+    top: 42%;
+    left: 1%;
+    width: 100%;
+    z-index: 1000;
+}
+
+#search_id {
+  font-size: 18px;
+}
