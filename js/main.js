@@ -19,7 +19,12 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 
 
 // Global Variables
-var map_layers = new L.LayerGroup();
+var search_layers = new L.LayerGroup();
+var lodging_layer = new L.LayerGroup();
+var dining_layer = new L.LayerGroup();
+var lakes_layer = new L.LayerGroup();
+var trails_layer = new L.LayerGroup();
+var activities_layer = new L.LayerGroup();
 var lodging;
 var dining;
 var lakes;
@@ -46,14 +51,26 @@ function showAll(){
       //Add search bar to top right corner
       var controlSearch = new L.Control.Search({
         position:'topright',
-        layer: map_layers,
+        layer: search_layers,
         propertyName: 'name',
         initial: false,
         zoom: 18,
         marker: false
       });
-
       mymap.addControl( controlSearch );
+
+      //Create overlay layers for map controlSearch
+      var overlayMaps = {
+          "Lodging": lodging_layer,
+          "Dining": dining_layer,
+          "Recreation": activities_layer,
+          "Trails": trails_layer,
+          "Lakes": lakes_layer
+        };
+
+      // Add layer control to the map
+      L.control.layers(null ,overlayMaps).addTo(mymap);
+
   });
 
     // Get CARTO selection as GeoJSON and Add lodging to the map
@@ -65,8 +82,10 @@ function showAll(){
                   layer.bindPopup('<p><b>' + feature.properties.name + '</b><br /><em>' + feature.properties.price + '</em></p>');
                   layer.cartodb_id=feature.properties.cartodb_id;
               }
-          }).addTo(mymap);
-          map_layers.addLayer(lodging);
+          })
+          search_layers.addLayer(lodging);
+          lodging_layer.addLayer(lodging);
+          lodging_layer.addTo(mymap);
         });
 
     }
@@ -79,8 +98,10 @@ function showAll(){
                     layer.bindPopup('<p><b>' + feature.properties.name + '</b><br /><em>' + feature.properties.price + '</em></p>');
                     layer.cartodb_id=feature.properties.cartodb_id;
                 }
-            }).addTo(mymap);
-            map_layers.addLayer(dining);
+            })
+            search_layers.addLayer(dining);
+            dining_layer.addLayer(dining);
+            dining_layer.addTo(mymap);
         });
       };
 
@@ -92,8 +113,10 @@ function showAll(){
                     layer.bindPopup('<p><b>' + feature.properties.name + '</b><br /><em>' + feature.properties.status + '</em></p>');
                     layer.cartodb_id=feature.properties.cartodb_id;
                 }
-            }).addTo(mymap);
-            map_layers.addLayer(activities);
+            })
+            search_layers.addLayer(activities);
+            activities_layer.addLayer(activities);
+            activities_layer.addTo(mymap);
         });
       }
 
@@ -105,8 +128,10 @@ function showAll(){
                     layer.bindPopup('<p><b>' + feature.properties.name + '</b><br /><em>' + feature.properties.time + '</em></p>');
                     layer.cartodb_id=feature.properties.cartodb_id;
                 }
-            }).addTo(mymap);
-            map_layers.addLayer(trails);
+            })
+            search_layers.addLayer(trails);
+            trails_layer.addLayer(trails);
+            trails_layer.addTo(mymap);
         });
     }
 
@@ -118,8 +143,10 @@ function showAll(){
                     layer.bindPopup('<p><b>' + feature.properties.name + '</b><br /><em>' + feature.properties.fishing + '</em></p>');
                     layer.cartodb_id=feature.properties.cartodb_id;
                 }
-            }).addTo(mymap);
-            map_layers.addLayer(lakes);
+            })
+            search_layers.addLayer(lakes);
+            lakes_layer.addLayer(lakes);
+            lakes_layer.addTo(mymap);
         });
       };
   };
