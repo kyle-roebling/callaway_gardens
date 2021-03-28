@@ -176,6 +176,22 @@ $(document).ready(function(){
   });
 });
 
+
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+  document.getElementById("mapid").style.marginLeft = "250px";
+  document.getElementById("navBar").style.marginLeft = "250px";
+  document.getElementById("footer").style.marginLeft = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("mapid").style.marginLeft= "0";
+  document.getElementById("navBar").style.marginLeft= "0";
+  document.getElementById("footer").style.marginLeft = "0";
+}
+
+
 // Run showAll function automatically when document loads
 $( document ).ready(function() {
   showAll();
