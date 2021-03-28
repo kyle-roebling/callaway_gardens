@@ -30,8 +30,8 @@
   font-size: 24px;
 }
 
-/*Styling for user search button */
-#button-search {
+/*Styling for user review button */
+#button-review {
     position: absolute;
     top: 42%;
     left: 1%;
@@ -39,6 +39,6 @@
     z-index: 1000;
 }
 
-#search_id {
+#review_id {
   font-size: 18px;
 }
