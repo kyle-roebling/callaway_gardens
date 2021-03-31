@@ -62,10 +62,70 @@
 		<!--Div for side panel form-->
 		<div id="mySidenav" class="sidenav">
 		  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-		  <a href="#">Name</a>
-		  <a href="#">Date</a>
-		  <a href="#">Rating</a>
-		  <a href="#">Comments</a>
+			<div class="input_form">
+				  <h2>Callaway Gardens Reviews</h2>
+				  <form>
+						<div class="form-group">
+						  <label for="Place">Place:</label>
+						  <select class="form-control" id="place">
+						    <option value=1>Callaway Gardens Lodge and Spa</option>
+						    <option value=2>The Villas</option>
+						    <option value=3>The Cabins</option>
+						    <option value=4>Callaway Gardens Mountain Creek Inn</option>
+								<option value=5>Piedmont Dining Room</option>
+								<option value=6>Cason's Tap Room</option>
+								<option value=7>Discovery Cafe</option>
+								<option value=8>Champions Grille</option>
+								<option value=9>Country Kitchen</option>
+								<option value=10>Cabana Bar & Grill</option>
+								<option value=11>Sprit of 52</option>
+								<option value=12>Gardens Restaurant</option>
+								<option value=13>Callaway Discovery Center</option>
+								<option value=14>Birds of Prey Show</option>
+								<option value=15>Cecil B. Day Butterfly Center</option>
+								<option value=16>Robin Lake Beach</option>
+								<option value=17>Pioneer Log Cabin</option>
+								<option value=18>Mini Golf</option>
+								<option value=19>Tennis Courts</option>
+								<option value=20>Tree Top Adventure & Ziplines</option>
+								<option value=21>Callaway Brother Azalea Bowl</option>
+								<option value=22>Beach Dome</option>
+								<option value=23>Golf Club</option>
+						  </select>
+						</div>
+
+						<div class="form-group">
+					    <label for="name">Name:</label>
+					    <input type="name" class="form-control" placeholder="Name" id="name">
+  					</div>
+
+						<div class="form-group">
+					    <label for="name">Date:</label>
+					    <input type="date" class="form-control" placeholder="Date" id="date">
+  					</div>
+
+
+
+						<div class="form-group">
+						  <label for="Place">Rating:</label>
+						  <select class="form-control" id="rating">
+						    <option value=5>5 Star</option>
+						    <option value=4>4 Star</option>
+						    <option value=3>3 Star</option>
+						    <option value=2>2 Star</option>
+								<option value=1>1 Star</option>
+							</select>
+						</div>
+
+
+					<div class="form-group">
+						  <label for="comment">Comments :</label>
+						  <textarea class="form-control" rows="5" id="comment"></textarea>
+					</div>
+
+				    <button type="submit" class="btn btn-primary" onclick="review_input()">Submit</button>
+				  </form>
+				</div>
 		</div>
 
 

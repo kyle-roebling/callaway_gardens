@@ -176,14 +176,15 @@ $(document).ready(function(){
   });
 });
 
-
+//Function that opens review tab and adjusts the webpage size
 function openNav() {
-  document.getElementById("mySidenav").style.width = "250px";
-  document.getElementById("mapid").style.marginLeft = "250px";
-  document.getElementById("navBar").style.marginLeft = "250px";
-  document.getElementById("footer").style.marginLeft = "250px";
+  document.getElementById("mySidenav").style.width = "300px";
+  document.getElementById("mapid").style.marginLeft = "300px";
+  document.getElementById("navBar").style.marginLeft = "300px";
+  document.getElementById("footer").style.marginLeft = "300px";
 }
 
+//Function that closes the reviw tab and adjusts the webpage size
 function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
   document.getElementById("mapid").style.marginLeft= "0";
@@ -191,6 +192,20 @@ function closeNav() {
   document.getElementById("footer").style.marginLeft = "0";
 }
 
+//Function that gets values of input forms
+function review_input() {
+  //Get Place id
+  var placeValue = document.getElementById("place").value;
+  //Get name value
+  var nameValue = document.getElementById("name").value;
+  //Get data values
+  var dateValue = document.getElementById("date").value;
+  //Get comments
+  var commentValue = document.getElementById("comment").value;
+  //Get Rating
+  var ratingValue = document.getElementById("rating").value;
+  alert(ratingValue);
+}
 
 // Run showAll function automatically when document loads
 $( document ).ready(function() {
