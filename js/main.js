@@ -81,7 +81,7 @@ function showAll(){
         $.getJSON("https://"+cartoDBUserName+".carto.com/api/v2/sql?format=GeoJSON&q="+sqlQuery_lodging, function(data) {
           lodging = L.geoJson(data,{
               onEachFeature: function (feature, layer) {
-                  layer.bindPopup('<p><b>' + feature.properties.name + '</b><br /><em>' + feature.properties.price + '</em></p>');
+                  layer.bindPopup('<p><b>' + feature.properties.name + '</b><br /><em>Price: ' + feature.properties.price + '</em><br /> <a href=' + feature.properties.website + ' target="_blank">Website</a> </p>');
                   layer.cartodb_id=feature.properties.cartodb_id;
               }
           })
@@ -97,7 +97,7 @@ function showAll(){
         $.getJSON("https://"+cartoDBUserName+".carto.com/api/v2/sql?format=GeoJSON&q="+sqlQuery_dining, function(data) {
             dining = new L.geoJson(data,{
                 onEachFeature: function (feature, layer) {
-                    layer.bindPopup('<p><b>' + feature.properties.name + '</b><br /><em>' + feature.properties.price + '</em></p>');
+                    layer.bindPopup('<p><b>Status:'+" "+ feature.properties.status +' </b></br><b>' + feature.properties.name + '</b><br /><em>Price:'+" " + feature.properties.price + '</em> <br /> <a href=' + feature.properties.website + ' target="_blank">Website</a></p>');
                     layer.cartodb_id=feature.properties.cartodb_id;
                 }
             })
@@ -112,7 +112,7 @@ function showAll(){
         $.getJSON("https://"+cartoDBUserName+".carto.com/api/v2/sql?format=GeoJSON&q="+sqlQuery_activities, function(data) {
             activities = L.geoJson(data,{
                 onEachFeature: function (feature, layer) {
-                    layer.bindPopup('<p><b>' + feature.properties.name + '</b><br /><em>' + feature.properties.status + '</em></p>');
+                    layer.bindPopup('<p><b>Status:'+" "+ feature.properties.status +' </b></br><b>' + feature.properties.name + '</b><br /> <a href=' + feature.properties.website + ' target="_blank">Website</a></p>');
                     layer.cartodb_id=feature.properties.cartodb_id;
                 }
             })
@@ -127,7 +127,7 @@ function showAll(){
         $.getJSON("https://"+cartoDBUserName+".carto.com/api/v2/sql?format=GeoJSON&q="+sqlQuery_trails, function(data) {
             trails = L.geoJson(data,{
                 onEachFeature: function (feature, layer) {
-                    layer.bindPopup('<p><b>' + feature.properties.name + '</b><br /><em>' + feature.properties.time + '</em></p>');
+                    layer.bindPopup('<p><b>' + feature.properties.name + '</b><br /><em>Est. Time:'+" " + feature.properties.time + " Minutes"+ '</em> <br /><em>'+" " + feature.properties.length + " Miles"+ '</em></p>');
                     layer.cartodb_id=feature.properties.cartodb_id;
                 }
             })
@@ -142,7 +142,7 @@ function showAll(){
         $.getJSON("https://"+cartoDBUserName+".carto.com/api/v2/sql?format=GeoJSON&q="+sqlQuery_lakes, function(data) {
             lakes = L.geoJson(data,{
                 onEachFeature: function (feature, layer) {
-                    layer.bindPopup('<p><b>' + feature.properties.name + '</b><br /><em>' + feature.properties.fishing + '</em></p>');
+                    layer.bindPopup('<p><b>' + feature.properties.name + '</b><br /><b>Fishing:</b>' + " " + feature.properties.fishing + ' <br /><b>Jet Sking :</b>' + " " + feature.properties.jet_ski + ' <br /><b>Paddleboating :</b>' + " " + feature.properties.paddleboat + '</p>');
                     layer.cartodb_id=feature.properties.cartodb_id;
                 }
             })
