@@ -30,6 +30,7 @@ var dining;
 var lakes;
 var trails;
 var activities;
+var submit;
 
 
 // Database Queries
@@ -193,23 +194,60 @@ function closeNav() {
   document.getElementById("footer").style.marginLeft = "0";
 }
 
-//Function that gets values of input forms
-function review_input() {
+function validate_input(){
+  submit = true;
+
   //Get Place id
   var placeValue = document.getElementById("place").value;
   placeValue = Number(placeValue)
   //Get name value
   var nameValue = document.getElementById("name").value;
   nameValue.toString()
+  //Check to make sure name is filled out
+  if (nameValue === ''){
+    alert("Enter your name!");
+    submit = false;
+  }
   //Get data values
   var dateValue = document.getElementById("date").value;
   dateValue.toString()
+  //Check to see if data is filled out
+  if (dateValue === ''){
+    alert("Enter a date!");
+    submit = false;
+  }
   //Get comments
   var commentValue = document.getElementById("comment").value;
   commentValue.toString()
   //Get Rating
   var ratingValue = document.getElementById("rating").value;
   ratingValue = Number(ratingValue)
+
+  if (submit == true){
+    review_input(placeValue,nameValue,dateValue,ratingValue,commentValue)
+  }else{
+    alert("Error with submission!")
+  }
+
+}
+
+//Function that gets values of input forms
+function review_input(placeValue,nameValue,dateValue,ratingValue,commentValue) {
+  //Get Place id
+  //var placeValue = document.getElementById("place").value;
+  //placeValue = Number(placeValue)
+  //Get name value
+  //var nameValue = document.getElementById("name").value;
+  //nameValue.toString()
+  //Get data values
+// var dateValue = document.getElementById("date").value;
+  //dateValue.toString()
+  //Get comments
+  //var commentValue = document.getElementById("comment").value;
+  //commentValue.toString()
+  //Get Rating
+  //var ratingValue = document.getElementById("rating").value;
+  //ratingValue = Number(ratingValue)
 
 
   //SQL query to insert data
