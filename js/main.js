@@ -42,6 +42,7 @@ var sqlQuery_activities = "SELECT * FROM activities_wgs";
 
 // Set CARTO Username
 var cartoDBUserName = "roebling";
+var api_key = "TFaeMPYHjMHeAnuUi6xE0w";
 
 // Function to add all layers
 function showAll(){
@@ -175,6 +176,56 @@ $(document).ready(function(){
     mymap.setView([32.83736, -84.85368], 13);
   });
 });
+
+//Function that opens review tab and adjusts the webpage size
+function openNav() {
+  document.getElementById("mySidenav").style.width = "300px";
+  document.getElementById("mapid").style.marginLeft = "300px";
+  document.getElementById("navBar").style.marginLeft = "300px";
+  document.getElementById("footer").style.marginLeft = "300px";
+}
+
+//Function that closes the reviw tab and adjusts the webpage size
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("mapid").style.marginLeft= "0";
+  document.getElementById("navBar").style.marginLeft= "0";
+  document.getElementById("footer").style.marginLeft = "0";
+}
+
+//Function that gets values of input forms
+function review_input() {
+  //Get Place id
+  var placeValue = document.getElementById("place").value;
+  placeValue = Number(placeValue)
+  //Get name value
+  var nameValue = document.getElementById("name").value;
+  nameValue.toString()
+  //Get data values
+  var dateValue = document.getElementById("date").value;
+  dateValue.toString()
+  //Get comments
+  var commentValue = document.getElementById("comment").value;
+  commentValue.toString()
+  //Get Rating
+  var ratingValue = document.getElementById("rating").value;
+  ratingValue = Number(ratingValue)
+
+
+  //SQL query to insert data
+  var sql_review = "INSERT INTO reviews (id,name,date,rating,comment) VALUES ("+placeValue+",'"+nameValue+"','"+dateValue+"',"+ratingValue+",'"+commentValue+"')"
+  var sql_test = "INSERT INTO reviews (id,name,date,rating,comment) VALUES (1,'Kyle','2021-4-03',5,'testing123')"
+  //Post URL
+  var review_url = "https://"+cartoDBUserName+".carto.com/api/v2/sql?q="+sql_review+"&api_key="+api_key
+
+  alert("Review was entered Succesfully!");
+  //jQuery post method
+  $.post(review_url,function(data,status) {
+  })
+};
+
+
+
 
 // Run showAll function automatically when document loads
 $( document ).ready(function() {
