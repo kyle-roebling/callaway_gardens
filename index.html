@@ -38,9 +38,9 @@
 
 		<!--Header for web map with bootstrap nav bar-->
 		<div id="navBar">
-			<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+			<nav class="navbar navbar-expand-md navbar-custom">
   			<a class="navbar-brand" href="#">Callaway Gardens</a>
-  			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+  			<button class="navbar-toggler ml-auto custom-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
     			<span class="navbar-toggler-icon"></span>
   			</button>
   			<div class="collapse navbar-collapse" id="collapsibleNavbar">
@@ -137,7 +137,7 @@
 
 					<div class="form-group">
 						  <label for="comment">Comments :</label>
-						  <textarea class="form-control" rows="5" id="comment"></textarea>
+						  <textarea class="form-control" rows="1" id="comment"></textarea>
 					</div>
 
 				    <button type="submit" class="btn btn-primary" onclick="validate_input()">Submit</button>
@@ -169,16 +169,15 @@
 
 
 		<!--Footer for web map-->
-		<div id="footer">
-			<h2>Callaway Gardens</h2>
+			<div id="footer">
+				<footer>
+				  <p>17800 US Hwy 27<br>
+	           Pine Mountain, GA 31822<br>
+						 (855)894-0420
+					</p>
+				</footer>
+			</div>
 
-			<footer>
-			  <p>17800 US Hwy 27<br>
-           Pine Mountain, GA 31822<br>
-					 (855)894-0420
-				</p>
-			</footer>
-		</div>
 
 		<script type="text/javascript" src="js/main.js"></script>
 

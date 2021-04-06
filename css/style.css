@@ -1,4 +1,37 @@
-/*Style for the web applicaton header */
+/*Style for the web applicaton navbar */
+.navbar-custom {
+    background-color: #6D9E3F;
+    width: 100%;
+}
+/* change the brand and text color */
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+    color: rgba(255,255,255,.8);
+}
+/* change the link color */
+.navbar-custom .navbar-nav .nav-link {
+    color: rgba(255,255,255,.5);
+}
+/* change the color of active or hovered links */
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:hover .nav-link {
+    color: #ffffff;
+  }
+
+/* Set the border color to the desired color */
+ .custom-toggler.navbar-toggler {
+     border-color: white;
+ }
+
+
+ .custom-toggler .navbar-toggler-icon {
+   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+ }
+
+ .custom-toggler.navbar-toggler {
+   border-color: rgb(255,255,255);
+ }
+
 
 
 /*Styling for home button  */
@@ -7,7 +40,7 @@
     top: 20%;
     left: 1%;
     width: 100%;
-    z-index: 1000;
+    z-index: 999;
 }
 
 #home_id {
@@ -20,7 +53,7 @@
     top: 30%;
     left: 1%;
     width: 100%;
-    z-index: 1000;
+    z-index: 999;
 }
 
 #location_id {
@@ -33,7 +66,7 @@
     top: 42%;
     left: 1%;
     width: 100%;
-    z-index: 1000;
+    z-index: 999;
 }
 
 #review_id {
@@ -46,20 +79,23 @@
   height: 100%;
   width: 0;
   position: fixed;
-  z-index: 1;
+  z-index: 10000;
   top: 0;
   left: 0;
-  background-color: #111;
+  background-color: #5C4A40;
   overflow-x: hidden;
   transition: 0.5s;
-  padding-top: 60px;
+  padding-top: 30px;
+  padding-bottom: 10px;
+  padding-left: 4px;
+  padding-right: 4px;
 }
 
 .sidenav label {
-  padding: 8px 8px 8px 8px;
+  padding: 4px 4px 4px 4px;
   text-decoration: none;
   font-size: 15px;
-  color: #818181;
+  color: white;
   display: block;
   transition: 0.3s;
 }
@@ -68,16 +104,17 @@
   padding: 8px 0px 8px 8px;
   text-decoration: none;
   font-size: 20px;
-  color: #818181;
+  color: white;
   display: block;
   transition: 0.3s;
 }
 
 .sidenav label:hover {
-  color: #f1f1f1;
+  color: #FF5340;
 }
 
 .sidenav .closebtn {
+  color: #FF5340;
   position: absolute;
   top: 0;
   right: 25px;
@@ -85,10 +122,27 @@
   margin-left: 50px;
 }
 
+.sidenav .btn-primary {
+  background-color: #FF5340;
+  border-color: #FF5340;
+}
+
+
 /*Style for the web applicaton basemap */
-#mapid { height: 400px;
+#mapid { /*height: 400px;*/
+        width: 100%;
+        height: 75vh;
         transition: margin-left .5s;
-        padding: 16px;
+        padding: 0px;
+}
+
+/*Style for footer */
+#footer {
+  background-color: #FF6F21;
+  color: white;
+  height: 15.5vh;
+  width: 100%;
+  padding-left: 20px;
 }
 
 

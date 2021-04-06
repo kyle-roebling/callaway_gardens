@@ -189,6 +189,7 @@ function openNav() {
 //Function that closes the reviw tab and adjusts the webpage size
 function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("mySidenav").style.zindex = "0";
   document.getElementById("mapid").style.marginLeft= "0";
   document.getElementById("navBar").style.marginLeft= "0";
   document.getElementById("footer").style.marginLeft = "0";
@@ -233,22 +234,6 @@ function validate_input(){
 
 //Function that gets values of input forms
 function review_input(placeValue,nameValue,dateValue,ratingValue,commentValue) {
-  //Get Place id
-  //var placeValue = document.getElementById("place").value;
-  //placeValue = Number(placeValue)
-  //Get name value
-  //var nameValue = document.getElementById("name").value;
-  //nameValue.toString()
-  //Get data values
-// var dateValue = document.getElementById("date").value;
-  //dateValue.toString()
-  //Get comments
-  //var commentValue = document.getElementById("comment").value;
-  //commentValue.toString()
-  //Get Rating
-  //var ratingValue = document.getElementById("rating").value;
-  //ratingValue = Number(ratingValue)
-
 
   //SQL query to insert data
   var sql_review = "INSERT INTO reviews (id,name,date,rating,comment) VALUES ("+placeValue+",'"+nameValue+"','"+dateValue+"',"+ratingValue+",'"+commentValue+"')"
