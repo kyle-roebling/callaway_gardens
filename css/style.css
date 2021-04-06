@@ -145,6 +145,15 @@
   padding-left: 20px;
 }
 
+.lodging_icon {
+  text-align: center;
+  /* Horizontally center the text (icon) */
+  line-height: 20px;
+  /* Vertically center the text (icon) */
+  color: white;
+  font-size: 30px;
+}
+
 
 
 @media screen and (max-height: 450px) {
