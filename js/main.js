@@ -32,6 +32,44 @@ var trails;
 var activities;
 var submit;
 
+// Layer Styling
+/*
+var lodging_style =  L.divIcon({
+    html: '<i class="fas fa-bed"></i>',
+    iconSize: [50, 50],
+    className: 'lodging_icon'
+});
+*/
+
+var lodging_style = L.AwesomeMarkers.icon({
+    icon: 'bed',
+    prefix: 'fa',
+    markerColor: 'green',
+    iconColor: 'white'
+  });
+
+var dining_style = L.AwesomeMarkers.icon({
+      icon: 'utensils',
+      prefix: 'fa',
+      markerColor: 'orange',
+      iconColor: 'white'
+    });
+
+var activities_style = L.AwesomeMarkers.icon({
+        icon: 'spa',
+        prefix: 'fa',
+        markerColor: 'pink',
+        iconColor: 'white'
+        });
+
+var trails_style = {
+  color: 'yellow'
+}
+
+var lakes_style ={
+  color: '#3D9EFF'
+}
+
 
 // Database Queries
 // Get all data elements
@@ -83,10 +121,11 @@ function showAll(){
               onEachFeature: function (feature, layer) {
                   layer.bindPopup('<p><b>' + feature.properties.name + '</b><br /><em>Price: ' + feature.properties.price + '</em><br /> <a href=' + feature.properties.website + ' target="_blank">Website</a> </p>');
                   layer.cartodb_id=feature.properties.cartodb_id;
-              }
+                  layer.setIcon(lodging_style)
+              },
           })
           search_layers.addLayer(lodging);
-          lodging_layer.addLayer(lodging);
+          lodging_layer.addLayer(lodging);;
           lodging_layer.addTo(mymap);
         });
 
@@ -99,6 +138,7 @@ function showAll(){
                 onEachFeature: function (feature, layer) {
                     layer.bindPopup('<p><b>Status:'+" "+ feature.properties.status +' </b></br><b>' + feature.properties.name + '</b><br /><em>Price:'+" " + feature.properties.price + '</em> <br /> <a href=' + feature.properties.website + ' target="_blank">Website</a></p>');
                     layer.cartodb_id=feature.properties.cartodb_id;
+                    layer.setIcon(dining_style)
                 }
             })
             search_layers.addLayer(dining);
@@ -114,6 +154,7 @@ function showAll(){
                 onEachFeature: function (feature, layer) {
                     layer.bindPopup('<p><b>Status:'+" "+ feature.properties.status +' </b></br><b>' + feature.properties.name + '</b><br /> <a href=' + feature.properties.website + ' target="_blank">Website</a></p>');
                     layer.cartodb_id=feature.properties.cartodb_id;
+                    layer.setIcon(activities_style)
                 }
             })
             search_layers.addLayer(activities);
@@ -129,6 +170,7 @@ function showAll(){
                 onEachFeature: function (feature, layer) {
                     layer.bindPopup('<p><b>' + feature.properties.name + '</b><br /><em>Est. Time:'+" " + feature.properties.time + " Minutes"+ '</em> <br /><em>'+" " + feature.properties.length + " Miles"+ '</em></p>');
                     layer.cartodb_id=feature.properties.cartodb_id;
+                    layer.setStyle(trails_style)
                 }
             })
             search_layers.addLayer(trails);
@@ -144,6 +186,7 @@ function showAll(){
                 onEachFeature: function (feature, layer) {
                     layer.bindPopup('<p><b>' + feature.properties.name + '</b><br /><b>Fishing:</b>' + " " + feature.properties.fishing + ' <br /><b>Jet Sking :</b>' + " " + feature.properties.jet_ski + ' <br /><b>Paddleboating :</b>' + " " + feature.properties.paddleboat + '</p>');
                     layer.cartodb_id=feature.properties.cartodb_id;
+                    layer.setStyle(lakes_style)
                 }
             })
             search_layers.addLayer(lakes);
