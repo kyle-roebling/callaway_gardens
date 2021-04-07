@@ -90,7 +90,7 @@ function showAll(){
 
       //Add search bar to top right corner
       var controlSearch = new L.Control.Search({
-        position:'topright',
+        position: 'topleft',
         layer: search_layers,
         propertyName: 'name',
         initial: false,
