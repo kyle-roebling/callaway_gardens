@@ -35,46 +35,59 @@
 
 
 /*Styling for home button  */
+
+
 #button-home {
-    position: absolute;
-    top: 20%;
-    left: 1%;
+    position: relative;
+    top: 28%;
+    left: .75%;
     width: 100%;
+
     z-index: 999;
 }
 
+
 #home_id {
   font-size: 17px;
+  border-radius: 4px;
 }
 
 /*Styling for user location button */
 #button-location {
     position: absolute;
-    top: 30%;
-    left: 1%;
+    top: 36%;
+    left: .75%;
     width: 100%;
     z-index: 999;
 }
 
 #location_id {
   font-size: 24px;
+  border-radius: 4px;
+}
+
+#location_id:hoover {
+
 }
 
 /*Styling for user review button */
 #button-review {
     position: absolute;
-    top: 42%;
-    left: 1%;
+    top: 47%;
+    left: .75%;
     width: 100%;
     z-index: 999;
 }
 
 #review_id {
   font-size: 18px;
+  border-radius: 4px;
 }
 
 
-/*Styling for side sliding slide panel                          */
+
+
+/*Styling for side sliding slide panel     */
 .sidenav {
   height: 100%;
   width: 0;
