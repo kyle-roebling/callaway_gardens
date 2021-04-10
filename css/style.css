@@ -2,6 +2,7 @@
 .navbar-custom {
     background-color: #6D9E3F;
     width: 100%;
+    z-index: 2;
 }
 /* change the brand and text color */
 .navbar-custom .navbar-brand,
@@ -89,7 +90,7 @@
   height: 100%;
   width: 0;
   position: fixed;
-  z-index: 10000;
+  z-index: 0;
   top: 0;
   left: 0;
   background-color: #5C4A40;
@@ -97,8 +98,8 @@
   transition: 0.5s;
   padding-top: 30px;
   padding-bottom: 10px;
-  padding-left: 4px;
-  padding-right: 4px;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 .sidenav label {
@@ -147,12 +148,12 @@
 }
 
 /*Style for footer */
-#footer {
+footer {
   background-color: #FF6F21;
   color: white;
   height: 15.5vh;
   width: 100%;
-  padding-left: 20px;
+  z-index: 2;
 }
 
 .lodging_icon {

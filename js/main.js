@@ -232,6 +232,7 @@ function openNav() {
 //Function that closes the reviw tab and adjusts the webpage size
 function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("mySidenav").style.width = "0";
   document.getElementById("mySidenav").style.zindex = "0";
   document.getElementById("mapid").style.marginLeft= "0";
   document.getElementById("navBar").style.marginLeft= "0";
