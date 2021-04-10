@@ -39,8 +39,8 @@
 
 #button-home {
     position: relative;
-    top: 28%;
-    left: .75%;
+    top: 125px;
+    left: 10px;
     width: 100%;
 
     z-index: 999;
@@ -55,8 +55,8 @@
 /*Styling for user location button */
 #button-location {
     position: absolute;
-    top: 36%;
-    left: .75%;
+    top: 165px;
+    left: 10px;
     width: 100%;
     z-index: 999;
 }
@@ -66,15 +66,12 @@
   border-radius: 4px;
 }
 
-#location_id:hoover {
-
-}
 
 /*Styling for user review button */
 #button-review {
     position: absolute;
-    top: 47%;
-    left: .75%;
+    top: 215px;
+    left: 10px;
     width: 100%;
     z-index: 999;
 }
