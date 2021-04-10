@@ -165,7 +165,26 @@ footer {
   font-size: 30px;
 }
 
+#address{
+  float:left;
+}
 
+#social_media{
+  float:right;
+  padding: 25px;
+}
+
+#facebook{
+  color: white;
+}
+
+#twitter{
+  color: white;
+}
+
+#instagram{
+  color: white;
+}
 
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
